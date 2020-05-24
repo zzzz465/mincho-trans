@@ -161,7 +161,7 @@ namespace Mincho_Infection
 					}
 					foreach (TraitDegreeData asd2 in asd1.def.degreeDatas)
 					{
-						if (asd2.untranslatedLabel == "Nudist")
+						if (asd1.def.ToString() == "Nudist")
 						{
 							pawn.story.traits.allTraits.Remove(asd1);
 						}
