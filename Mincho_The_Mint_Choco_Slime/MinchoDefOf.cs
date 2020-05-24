@@ -20,6 +20,8 @@ namespace Mincho_Infection
 		// Token: 0x04000008 RID: 8
 		public static HediffDef Mincho_Infection = new HediffDef();
 
+		public static ThingDef Mincho_Filth_BloodDef = new ThingDef();
+
 		// Token: 0x0600000C RID: 12 RVA: 0x00002706 File Offset: 0x00000906
 		static MinchoDefOf()
 		{

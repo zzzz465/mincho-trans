@@ -87,7 +87,7 @@ namespace Mincho_Infection
 				bool flag = GenGrid.InBounds(intVec, pawn.Map) && GridsUtility.GetRoom(pawn.Position, pawn.Map, (RegionType)6) == GridsUtility.GetRoom(intVec, pawn.Map, (RegionType)6);
 				if (flag)
 				{
-					FilthMaker.TryMakeFilth(pawn.Position, pawn.Map, pawn.RaceProps.BloodDef, GenText.LabelIndefinite(pawn), Rand.RangeInclusive(0, 4));
+					FilthMaker.TryMakeFilth(pawn.Position, pawn.Map, MinchoDefOf.Mincho_Filth_BloodDef, GenText.LabelIndefinite(pawn), Rand.RangeInclusive(0, 4));
 				}
 			}
 			Pawn pawn2 = PawnGenerator.GeneratePawn(pawnGenerationRequest);
