@@ -40,8 +40,10 @@ namespace RW_Mincho
 								DrugDesire,
 								Immunity";
 			var matches = Regex.Matches(forbiddenTraits, "[a-zA-Z]+");
-			forbiddenStrings = new HashSet<string>((matches as IEnumerable<Match>).Select(match => match.Value));
-			
+			forbiddenStrings = new HashSet<string>();
+			foreach (var match in matches)
+				forbiddenStrings.Add(((Match)match).Value);
+
 		}
 		public static HashSet<String> forbiddenStrings;
 		public static void GenerateMincho(Pawn originalPawn, Hediff hediff)
