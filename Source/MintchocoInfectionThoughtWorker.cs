@@ -3,11 +3,10 @@ using RimWorld;
 using Verse;
 using UnityEngine;
 
-namespace Mincho_Infection
+namespace RW_Mincho
 {
 	public class ThoughtWorker_MintchocoInfection : ThoughtWorker
 	{
-		// Token: 0x06000006 RID: 6 RVA: 0x000024BC File Offset: 0x000006BC
 		protected override ThoughtState CurrentStateInternal(Pawn p)
 		{
 			Hediff firstHediffOfDef = p.health.hediffSet.GetFirstHediffOfDef(this.def.hediff, false);
