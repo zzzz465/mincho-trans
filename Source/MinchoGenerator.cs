@@ -6,8 +6,10 @@ using RimWorld;
 using Verse;
 using System.Text;
 using Verse.Sound;
+using System.Text.RegularExpressions;
+using System.Collections;
 
-namespace Mincho_Infection
+namespace RW_Mincho
 {
 	// Token: 0x02000002 RID: 2
 	public static class MinchoGenerator
@@ -37,9 +39,11 @@ namespace Mincho_Infection
 								CreepyBreathing,
 								DrugDesire,
 								Immunity";
+			var matches = Regex.Matches(forbiddenTraits, "[a-zA-Z]+");
+			forbiddenStrings = new HashSet<string>((matches as IEnumerable<Match>).Select(match => match.Value));
 			
 		}
-		public static string[] forbiddenStrings;
+		public static HashSet<String> forbiddenStrings;
 		public static void GenerateMincho(Pawn originalPawn, Hediff hediff)
 		{
 			CreateMinchoFilth(originalPawn);
@@ -116,7 +120,10 @@ namespace Mincho_Infection
 
 		private static void RemoveForbiddenTrait(ref Pawn pawn)
 		{
-
+			var traits = pawn.story.traits.allTraits;
+			foreach(var trait in traits)
+				if (forbiddenStrings.Contains(trait.def.defName))
+					pawn.story.traits.allTraits.Remove(trait);
 		}
 
 		private static (Backstory childhood, Backstory adult) GetBackstory(in Pawn originalPawn)
