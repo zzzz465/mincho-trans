@@ -1,12 +1,12 @@
 ﻿using System;
 using Verse;
 
-namespace Mincho_Infection
+namespace RW_Mincho
 {
-	// Token: 0x02000003 RID: 3
 	public class MinchoInfectionHediffComp : HediffComp
 	{
-		// Token: 0x06000004 RID: 4 RVA: 0x00002414 File Offset: 0x00000614
+		private bool finalStage = false;
+
 		public override void CompPostTick(ref float severityAdjustment)
 		{
 			base.CompPostTick(ref severityAdjustment);
@@ -23,8 +23,5 @@ namespace Mincho_Infection
 				MinchoGenerator.GenerateMincho(base.Pawn, this.parent);
 			}
 		}
-
-		// Token: 0x04000003 RID: 3
-		private bool finalStage = false;
 	}
 }
