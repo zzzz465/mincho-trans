@@ -46,7 +46,7 @@ namespace RW_Mincho
 
 		}
 		public static HashSet<String> forbiddenStrings;
-		public static void GenerateMincho(Pawn originalPawn, Hediff hediff)
+		public static void ConvertToMincho(Pawn originalPawn, Hediff hediff)
 		{
 			CreateMinchoFilth(originalPawn);
 			(var generatedPawn, var isWildPawn) = CreateReplacedPawn(originalPawn);
@@ -98,6 +98,7 @@ namespace RW_Mincho
 
 			TranslatePawnRelations(originalPawn, generatedPawn);
 			RemoveForbiddenTrait(ref generatedPawn);
+			generatedPawn.skills = originalPawn.skills; // move skills
 
 			return (generatedPawn, isWildMan);
 		}
