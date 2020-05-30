@@ -79,7 +79,7 @@ namespace RW_Mincho
 			false, false, false, false, false, 0f, false, false, false, false, false, false,
 			false, false, 0, null, 0, null, null, null, null, null, 
 			originalPawn.ageTracker.AgeBiologicalYearsFloat, originalPawn.ageTracker.AgeChronologicalYearsFloat,
-				null, 0, null, null, null);
+				null, 0, "Temp", "Temp", null);
 
 			// set faction of pawn
 			if(originalPawn.Faction == Faction.OfPlayer || originalPawn.IsPrisonerOfColony)
@@ -98,7 +98,9 @@ namespace RW_Mincho
 
 			TranslatePawnRelations(originalPawn, generatedPawn);
 			RemoveForbiddenTrait(ref generatedPawn);
+			CopyName(originalPawn, generatedPawn);
 			generatedPawn.skills = originalPawn.skills; // move skills
+
 
 			return (generatedPawn, isWildMan);
 		}
@@ -108,6 +110,15 @@ namespace RW_Mincho
 			RemoveRelationFromOtherRelatedPawns(from);
 			foreach(var relation in from.relations.DirectRelations)
 				to.relations.AddDirectRelation(relation.def, relation.otherPawn);
+		}
+
+		private static void CopyName(Pawn from, Pawn to)
+		{
+			var name = from.Name;
+			if(name is NameTriple triple)
+				to.Name = new NameTriple(triple.First, triple.Nick, triple.Last);
+			else if(name is NameSingle single)
+				to.Name = new NameSingle(single.Name, single.Numerical);
 		}
 
 		private static void RemoveRelationFromOtherRelatedPawns(Pawn pawn)
