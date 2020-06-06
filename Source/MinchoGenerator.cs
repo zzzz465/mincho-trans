@@ -147,39 +147,39 @@ namespace RW_Mincho
 			string Identifier = string.Empty;
 			if(originalPawn.IsColonist) // 정착민
 			{
-				Identifier = BackstoryDatabase.GetIdentifierClosestMatch("Mincho_Infection_Colonist");
+				Identifier = "Mincho_Infection_Colonist";
 				faction = Faction.OfPlayer;
 			}
 			else if(originalPawn.IsPrisoner) // 죄수
 			{
-				Identifier = BackstoryDatabase.GetIdentifierClosestMatch("Mincho_Infection_Prisoner");
+				Identifier = "Mincho_Infection_Prisoner";
 				faction = Faction.OfPlayer;
 			}
 			else if(originalPawn.Faction == null) // 야인
-				Identifier = BackstoryDatabase.GetIdentifierClosestMatch("Mincho_Infection_Wildman");
+				Identifier = "Mincho_Infection_Wildman";
 			else if(originalPawn.Faction.AllyOrNeutralTo(Faction.OfPlayer)) // 적대
-				Identifier = BackstoryDatabase.GetIdentifierClosestMatch("Mincho_Infection_NPC");
+				Identifier = "Mincho_Infection_NPC";
 			else if(originalPawn.Faction.HostileTo(Faction.OfPlayer))
-				Identifier = BackstoryDatabase.GetIdentifierClosestMatch("Mincho_Infection_Pirate");
+				Identifier = "Mincho_Infection_Pirate";
 			else if(originalPawn.RaceProps.intelligence == Intelligence.Humanlike)
 			{ // 동물
 				if(originalPawn.Faction == Faction.OfPlayer)
 				{
-					Identifier = BackstoryDatabase.GetIdentifierClosestMatch("Mincho_Infection_Animal_Colony");
+					Identifier = "Mincho_Infection_Animal_Colony";
 					faction = Faction.OfPlayer;
 				}
 				else if(originalPawn.Faction == null)
-					Identifier = BackstoryDatabase.GetIdentifierClosestMatch("Mincho_Infection_Animal_Wild");
+					Identifier = "Mincho_Infection_Animal_Wild";
 				else if(originalPawn.Faction.HostileTo(Faction.OfPlayer))
-					Identifier = BackstoryDatabase.GetIdentifierClosestMatch("Mincho_Infection_Animal_Pirate");
+					Identifier = "Mincho_Infection_Animal_Pirate";
 				else if(originalPawn.Faction.AllyOrNeutralTo(Faction.OfPlayer))
 				{
-					Identifier = BackstoryDatabase.GetIdentifierClosestMatch("Mincho_Infection_Animal_NPC");
+					Identifier = "Mincho_Infection_Animal_NPC";
 					faction = originalPawn.Faction;
 				}
 			}
 			else
-				Identifier = BackstoryDatabase.GetIdentifierClosestMatch("Mincho_Infection_Undefined");
+				Identifier = "Mincho_Infection_Undefined";
 
 			childHoodBackstory = BackstoryDatabase.allBackstories[Identifier];
 
